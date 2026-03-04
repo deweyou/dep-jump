@@ -1,0 +1,65 @@
+{
+  "name": "dep-jump",
+  "displayName": "Dep Jump",
+  "description": "Jump from package.json dependencies to the matching installed package or workspace source.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Dewey Ou",
+    "email": "oushihao97@gmail.com"
+  },
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deweyou/dep-jump.git"
+  },
+  "homepage": "https://github.com/deweyou/dep-jump#readme",
+  "bugs": {
+    "url": "https://github.com/deweyou/dep-jump/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "package.json",
+    "dependencies",
+    "node_modules",
+    "monorepo",
+    "workspace"
+  ],
+  "activationEvents": [
+    "onLanguage:json",
+    "onLanguage:jsonc"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "depJump.openDependency",
+        "title": "Dep Jump: Open Dependency Under Cursor"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "npx @vscode/vsce package",
+    "publish:patch": "npx @vscode/vsce publish patch",
+    "publish:minor": "npx @vscode/vsce publish minor",
+    "publish:major": "npx @vscode/vsce publish major"
+  },
+  "dependencies": {
+    "semver": "^7.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/semver": "^7.5.8",
+    "@types/vscode": "^1.97.0",
+    "typescript": "^5.8.2"
+  }
+}
