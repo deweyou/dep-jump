@@ -7,7 +7,7 @@
     "name": "Dewey Ou",
     "email": "oushihao97@gmail.com"
   },
-  "publisher": "your-publisher-id",
+  "publisher": "DeweyOu",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/deweyou/dep-jump/issues"
   },
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },

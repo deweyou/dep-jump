@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background rounded square -->
+  <rect width="128" height="128" rx="24" ry="24" fill="#1a1e30"/>
+
+  <!-- Package box outline -->
+  <rect x="18" y="36" width="52" height="56" rx="6" ry="6"
+        fill="none" stroke="#4fc3f7" stroke-width="5"/>
+  <!-- Box lid line -->
+  <line x1="18" y1="54" x2="70" y2="54" stroke="#4fc3f7" stroke-width="5"/>
+  <!-- Box handle -->
+  <path d="M34 54 Q44 42 56 54" fill="none" stroke="#4fc3f7" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Arrow shaft -->
+  <line x1="76" y1="64" x2="102" y2="64" stroke="#4ec9b0" stroke-width="6" stroke-linecap="round"/>
+  <!-- Arrowhead -->
+  <polyline points="92,50 108,64 92,78"
+            fill="none" stroke="#4ec9b0" stroke-width="6"
+            stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
