@@ -2,7 +2,7 @@
   "name": "dep-jump",
   "displayName": "Dep Jump",
   "description": "Jump from package.json dependencies to the matching installed package or workspace source.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Dewey Ou",
     "email": "oushihao97@gmail.com"
@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/deweyou/dep-jump/issues"
   },
-  "icon": "icon.png",
+  "icon": "./static/icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },
