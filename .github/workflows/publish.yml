@@ -44,7 +44,9 @@ jobs:
           fi
 
       - name: Compute VSIX file name
-        run: echo "VSIX_FILE=$(node -p \"const pkg = require('./package.json'); pkg.name + '-' + pkg.version + '.vsix'\")" >> "$GITHUB_ENV"
+        run: |
+          VSIX_FILE="$(node -e "const pkg = require('./package.json'); process.stdout.write(pkg.name + '-' + pkg.version + '.vsix');")"
+          echo "VSIX_FILE=${VSIX_FILE}" >> "$GITHUB_ENV"
 
       - name: Package VSIX
         run: npm run package
