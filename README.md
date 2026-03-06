@@ -1,24 +1,55 @@
 # Dep Jump
 
-![demo_show](./static/demo_show.gif)
+Dep Jump is a VS Code extension that makes dependency navigation inside `package.json` fast and reliable.
 
+When your cursor is on a dependency name, Dep Jump resolves where that dependency actually comes from and opens the matching package manifest file.
 
-在 `package.json`（以及兼容的 `packages.json`）里，对 `dependencies`、`devDependencies`、`peerDependencies`、`optionalDependencies` 中的依赖名执行 `F12` / `Ctrl+Click`，即可跳转到对应依赖。
+![Dep Jump Demo](./static/demo_show.gif)
 
-支持两类解析：
+## What This Extension Solves
 
-- 普通依赖：按当前 `package.json` 所在目录的 Node.js 解析路径逐级查找 `node_modules`，并用 semver 校验已安装版本是否满足声明版本。
-- alias 依赖：支持 `npm:` 别名写法，例如 `npm:@universe-design/icons@3.186.1`，会按别名目录查找，但用真实包名和版本做校验。
-- `workspace:*` 依赖：在当前 VS Code 工作区内查找同名 package，并优先跳到源码入口（如 `source`、`src/index.ts` 等），否则回退到该 package 的 `package.json`。
+In real projects, dependency names are not always a 1:1 mapping to a single package location:
 
-交互方式：
+- Multiple versions of the same package can exist in nested `node_modules`.
+- Alias dependencies can point to a different real package name.
+- Monorepos can use `workspace:*` and resolve to local source packages.
 
-- `Cmd/Ctrl + Click`：优先走插件提供的文档链接，打开目标包的 `package.json`（兼容 `packages.json`）并自动在 Explorer 中执行 reveal。
-- `F12`：走 VS Code 的 Go to Definition，同样会打开目标包的 `package.json`（兼容 `packages.json`）。
-- Hover：悬停依赖名时会显示解析后的真实包名、版本信息、将打开的清单文件，以及解析到的入口文件。
+Dep Jump handles these cases so navigation still lands in the correct target.
 
+## Key Features
 
+- Works in `dependencies`, `devDependencies`, `peerDependencies`, and `optionalDependencies`.
+- Resolves dependency targets using Node-style lookup from the current package directory.
+- Validates resolved versions against semver ranges.
+- Supports `npm:` alias dependencies (maps alias name to real package name/version).
+- Supports `workspace:*` dependencies and jumps to the local workspace package manifest.
+- Supports `file:` and `link:` local dependencies.
+- Shows hover details: resolved package, requested version, resolved version, target manifest path, and entry file.
 
-## LICENSE
+## Demo Dependency Cases
+
+```json
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "@demo/icons-peer": "npm:@demo-scope/icons@3.2.1",
+    "@demo/workspace-ui": "workspace:*"
+  }
+}
+```
+
+Behavior:
+
+- `react` resolves to the matching installed version in `node_modules`.
+- `@demo/icons-peer` resolves by alias directory but validates against `@demo-scope/icons@3.2.1`.
+- `@demo/workspace-ui` resolves to the local monorepo package.
+
+## How To Use
+
+- `Cmd/Ctrl + Click` on a dependency name to open its resolved package manifest and reveal it in Explorer.
+- Press `F12` on a dependency name to go to the same resolved package manifest.
+- Hover a dependency name to inspect resolution details.
+
+## License
 
 [MIT License](./LICENSE)

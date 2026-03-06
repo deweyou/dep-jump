@@ -2,7 +2,7 @@
   "name": "dep-jump",
   "displayName": "Dep Jump",
   "description": "Jump from package.json dependencies to the matching installed package or workspace source.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": {
     "name": "Dewey Ou",
     "email": "oushihao97@gmail.com"
